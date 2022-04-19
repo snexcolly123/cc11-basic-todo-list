@@ -8,10 +8,10 @@ function Todo(props) {
       </span>
       <div className="btn-group">
         <Button color="outline-info">
-          <i class="fa-solid fa-toggle-off"></i>
+          <i className="fa-solid fa-toggle-off"></i>
         </Button>
         <Button color="danger">
-          <i class="fa-solid fa-trash-can"></i>
+          <i className="fa-solid fa-trash-can"></i>
         </Button>
       </div>
     </li>

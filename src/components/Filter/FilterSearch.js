@@ -8,7 +8,7 @@ function FilterSearch(){
           placeholder="Search"
         />
         <Button color="dark">
-          <i class="fa-solid fa-xmark"></i>
+          <i className="fa-solid fa-xmark"></i>
         </Button>
     </div>
 };
