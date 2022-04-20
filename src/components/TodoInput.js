@@ -3,31 +3,29 @@ import Button from "./UI/Button";
 
 function TodoInput(props) {
   const [todoInput, setTodoInput] = useState("");
-  const [TodoError, setTodoError] = useState({
-    email: "",
-    username: "",
-    firstname: "",
-  });
+  const [todoError, setTodoError] = useState("");
+
+  const handleClickCreateBtn = () => {
+    if (!todoInput) {
+      setTodoError("Title is required");
+    } else {
+      props.createTodo(todoInput);
+      setTodoError("");
+      setTodoInput("");
+    }
+  };
+
   return (
     <>
       <div className="input-group shadow">
         <input
           type="text"
-          className="form-control is-invalid"
+          className={`form-control ${todoError ? "is-invalid" : ""}`}
           placeholder="Enter new todo"
           value={todoInput}
           onChange={(event) => setTodoInput(event.target.value)}
         />
-        <Button
-          color="success"
-          onClick={() => {
-            if (!todoInput) {
-              setTodoError("Title is required");
-            } else {
-              props.createTodo(todoInput);
-            }
-          }}
-        >
+        <Button color="success" onClick={handleClickCreateBtn}>
           <i className="fa-solid fa-plus"></i>
         </Button>
 
@@ -39,7 +37,7 @@ function TodoInput(props) {
           <i className="fa-solid fa-xmark"></i>
         </Button>
       </div>
-      <small className="text-danger">Title is required.</small>
+      {todoError && <small className="text-danger">{todoError}</small>}
     </>
   );
 }

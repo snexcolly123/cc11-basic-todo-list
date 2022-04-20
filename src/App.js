@@ -24,9 +24,12 @@ function App() {
   const [todoList, setTodoList] = useState(intialTodoList);
   const createTodo = (title) => {
     const newTodo = { title, completed: false, id: uuidv4() };
-    const oldTodoList = [...todoList];//clone todoList
-    oldTodoList.unshift(newTodo);
-    setTodoList(oldTodoList);
+    //แบบ1
+    // const oldTodoList = [...todoList];//clone todoList
+    // oldTodoList.unshift(newTodo);
+    //แบบ2 ควรเปลี่ยนชื่อจากoldTodoList เป็น newTodoList
+    const newTodoList = [newTodo, ...todoList];
+    setTodoList(newTodoList);
   };
 
   return (
